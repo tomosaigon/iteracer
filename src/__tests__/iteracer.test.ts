@@ -46,12 +46,12 @@ async function* createTimeoutLoop2(): AsyncGenerator<number, void, void> {
 }
 
 // Example callback functions
-function callbackForIterator1(value: number | string) {
+async function callbackForIterator1(value: number | string) {
   console.log(`Callback for Iterator 1: ${value}`);
   return true;
 }
 
-function callbackForIterator2(value: number | string) {
+async function callbackForIterator2(value: number | string) {
   console.log(`Callback for Iterator 2: ${value}`);
   return true;
 }

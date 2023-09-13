@@ -15,8 +15,8 @@
 export async function iteracer<T1, T2>(
     iterator1: AsyncGenerator<T1, void, void>,
     iterator2: AsyncGenerator<T2, void, void>,
-    callback1: (value: T1) => boolean,
-    callback2: (value: T2) => boolean,
+    callback1: (value: T1) => Promise<boolean>,
+    callback2: (value: T2) => Promise<boolean>,
     done1: () => void,
     done2: () => void
 ) {
@@ -47,14 +47,14 @@ export async function iteracer<T1, T2>(
             done = true;
         } else {
             if (identifier === 'iterator1') {
-                if (callback1(value.value as T1)) {
+                if (await callback1(value.value as T1)) {
                     iterator1Promise = wrapPromise(iterator1.next(), 'iterator1');
                 } else {
                     done = true;
                 }
             }
             else if (identifier === 'iterator2') {
-                if (callback2(value.value as T2)) {
+                if (await callback2(value.value as T2)) {
                     iterator2Promise = wrapPromise(iterator2.next(), 'iterator2');
                 } else {
                     done = true;

@@ -1,6 +1,6 @@
 {
   "name": "iteracer",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Concurrently processes two asynchronous iterators immediately as either yields, invoking callback functions for yielded values and `done` functions upon completion of each iterator.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
