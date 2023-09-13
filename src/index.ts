@@ -49,11 +49,15 @@ export async function iteracer<T1, T2>(
             if (identifier === 'iterator1') {
                 if (callback1(value.value as T1)) {
                     iterator1Promise = wrapPromise(iterator1.next(), 'iterator1');
+                } else {
+                    done = true;
                 }
             }
             else if (identifier === 'iterator2') {
                 if (callback2(value.value as T2)) {
                     iterator2Promise = wrapPromise(iterator2.next(), 'iterator2');
+                } else {
+                    done = true;
                 }
             }
         }
